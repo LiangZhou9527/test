@@ -12,6 +12,10 @@
 
 BOOST_AUTO_TEST_CASE( broken_test )
 {
+#if WIN32
+  BOOST_CHECK_EQUAL( ::system("cmd.exe /c dir"), 0 );
+#else
   BOOST_CHECK_EQUAL( ::system("ls"), 0 );
+#endif
 }
 
